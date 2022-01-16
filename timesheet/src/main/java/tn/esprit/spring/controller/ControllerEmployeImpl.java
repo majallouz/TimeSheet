@@ -47,7 +47,6 @@ public class ControllerEmployeImpl  {
 
 	private Integer employeIdToBeUpdated; // getter et setter
 
-
 	public String doLogin() {
 
 		String navigateTo = "null";
