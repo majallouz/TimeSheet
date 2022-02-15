@@ -30,7 +30,7 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 		return dep.getId();
 	}
 	
-	public void affecterDepartementAEntreprise(int depId, int entrepriseId) {
+	public void affecterDepartementAEntreprise (int depId, int entrepriseId) {
 		//Le bout Master de cette relation N:1 est departement  
 				//donc il faut rajouter l'entreprise a departement 
 				// ==> c'est l'objet departement(le master) qui va mettre a jour l'association
@@ -38,7 +38,9 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 				//Rappel : Dans une relation oneToMany le mappedBy doit etre du cote one.
 				Entreprise entrepriseManagedEntity = entrepriseRepoistory.findById(entrepriseId).orElse(null);
 				Departement depManagedEntity = deptRepoistory.findById(depId).orElse(null);
-				
+				if (entrepriseManagedEntity ==null || depManagedEntity ==null ) {
+					throw new NullPointerException() ;
+				}
 				depManagedEntity.setEntreprise(entrepriseManagedEntity);
 				deptRepoistory.save(depManagedEntity);
 		
@@ -46,6 +48,9 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 	
 	public List<String> getAllDepartementsNamesByEntreprise(int entrepriseId) {
 		Entreprise entrepriseManagedEntity = entrepriseRepoistory.findById(entrepriseId).orElse(null);
+		if (entrepriseManagedEntity ==null ) {
+			throw new NullPointerException() ;
+		}
 		List<String> depNames = new ArrayList<>();
 		for(Departement dep : entrepriseManagedEntity.getDepartements()){
 			depNames.add(dep.getName());
