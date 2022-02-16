@@ -23,12 +23,12 @@ pipeline {
         }
         stage('Sonar') {
             steps {
-                bat 'mvn sonar:sonar -f TimeSheet'
+                bat 'mvn sonar:sonar'
             }
         }
         stage('Deploy') {
             steps {
-                bat 'mvn package deploy -f TimeSheet'
+                bat 'mvn package deploy '
             }
         }
         
