@@ -1,8 +1,5 @@
 pipeline {
-parameters{
-string(name: 'B', defaultValue: '', description: '')
 
-}
 
     agent any
     stages {
@@ -15,8 +12,8 @@ string(name: 'B', defaultValue: '', description: '')
         }
         stage('Test') {
             steps { 
-                bat 'mvn test
-                //bat \'mvn test -f TimeSheet'
+                bat 'mvn test'
+                /* bat 'mvn test -f TimeSheet' */
             }
             post {
                 always {
