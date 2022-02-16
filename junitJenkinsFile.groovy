@@ -1,19 +1,16 @@
 pipeline {
-    post {
-        always {
-            deleteDir()
-            emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
-                        recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
-                        subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}",
-                        to: '$DEFAULT_REPLYTO'
-        }
-    }
+parameters{
+string(name: 'B', defaultValue: '', description: '')
+
+}
+
     agent any
     stages {
-        stage('clone and clean repo') {
+         stage('clone and clean repo') {
             steps {
-                bat 'git clone https://github.com/majallouz/TimeSheet.git'
-                bat 'mvn clean -f TimeSheet'
+                git changelog: false, branch: 'Malek_branch',  credentialsId: 'mgara07', poll: false, url: 'https://github.com/majallouz/TimeSheet.git'
+                /* bat 'git clone https://github.com/majallouz/TimeSheet.git'
+                bat 'mvn clean -f TimeSheet' */
             }
         }
         stage('Test') {
@@ -25,13 +22,31 @@ pipeline {
                 }
             }
         }
-
-        stage('Deploy') {
+        stage('Sonar') {
             steps {
-                bat 'mvn package -f TimeSheet'
-                bat 'mvn deploy -f TimeSheet'
                 bat 'mvn sonar:sonar -f TimeSheet'
             }
         }
+        stage('Deploy') {
+            steps {
+                bat 'mvn package deploy -f TimeSheet'
+            }
+        }
+        
+        stage('clean ws') {
+
+            steps {
+                    cleanWs()
+            }
+
+        }
     }
+    /* post { 
+        always {            
+            emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
+                        recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
+                        subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}",
+                        to: '$DEFAULT_REPLYTO'
+        }
+    } */
 }
