@@ -87,7 +87,7 @@ class TimesheetServiceImplTest {
 		Date endDate = new Date(2021,06,12);
 		timesheetService.ajouterTimesheet(missionID, employeeID, startDate, endDate);
 		
-		log.info("This is One TimeSheet of " + employeeService.getTimesheetsByMissionAndDate(e, m, startDate, endDate).size() + "Timesheets" );
+		log.trace("This is One TimeSheet of " + employeeService.getTimesheetsByMissionAndDate(e, m, startDate, endDate).size() + "Timesheets" );
 		log.info("********************************End Method Test Add Timesheet ******************************************************");
 
 	}

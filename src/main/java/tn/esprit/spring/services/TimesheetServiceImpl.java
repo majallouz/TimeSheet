@@ -68,7 +68,7 @@ public class TimesheetServiceImpl implements ITimesheetService {
 		//verifier s'il est un chef de departement (interet des enum)
 		if(!validateur.getRole().equals(Role.CHEF_DEPARTEMENT)){
 			System.out.println("l'employe doit etre chef de departement pour valider une feuille de temps !");
-			log.error("Timesheet Invalid");
+			log.error("Timesheet is Invalid");
 			return;
 		}
 		//verifier s'il est le chef de departement de la mission en question
@@ -81,13 +81,13 @@ public class TimesheetServiceImpl implements ITimesheetService {
 		}
 		if(!chefDeLaMission){
 			System.out.println("l'employe doit etre chef de departement de la mission en question");
-			log.error("Timesheet Invalid");
+			log.error("Timesheet is Invalid");
 			return;
 		}
 //
 		TimesheetPK timesheetPK = new TimesheetPK(missionId, employeId, dateDebut, dateFin);
 		Timesheet timesheet =timesheetRepository.findBytimesheetPK(timesheetPK);
-		log.info("Timesheet Valide");
+		log.info("Timesheet is Valid");
 		timesheet.setValide(true);
 		
 		//Comment Lire une date de la base de données
