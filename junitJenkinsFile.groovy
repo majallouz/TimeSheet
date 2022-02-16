@@ -14,7 +14,9 @@ string(name: 'B', defaultValue: '', description: '')
             }
         }
         stage('Test') {
-            steps { bat 'mvn test -f TimeSheet'
+            steps { 
+                bat 'mvn test
+                //bat \'mvn test -f TimeSheet'
             }
             post {
                 always {
