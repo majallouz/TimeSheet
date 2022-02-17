@@ -112,12 +112,12 @@ under the License.
   <server>
       <id>nexus-snapshots</id>
       <username>admin</username>
-      <password>admin123</password>    
+      <password>Vermeg+123</password>    
  </server>
  <server>
       <id>releases</id>
       <username>admin</username>
-      <password>admin123</password>    
+      <password>Vermeg+123</password>    
  </server>
     <!-- server
      | Specifies the authentication information to use when connecting to a particular server, identified by
@@ -164,7 +164,7 @@ under the License.
       <id>central</id>
       <mirrorOf>*</mirrorOf>
       <name>central</name>
-      <url>http://localhost:8081/nexus/content/repositories/central/</url>
+      <url>http://localhost:8081/#browse/browse:maven-central</url>
     </mirror>
     
   </mirrors>
