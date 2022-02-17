@@ -12,6 +12,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import tn.esprit.spring.dto.ContratDTO;
+
 @Entity
 public class Contrat implements Serializable {
 	
@@ -42,6 +44,13 @@ public class Contrat implements Serializable {
 		this.dateDebut = dateDebut;
 		this.typeContrat = typeContrat;
 		this.salaire = salaire;
+	}
+	
+	public Contrat(ContratDTO dto) {
+		this.reference = dto.getReference();
+		this.dateDebut = dto.getDateDebut();
+		this.typeContrat = dto.getTypeContrat();
+		this.salaire = dto.getSalaire();
 	}
 
 
