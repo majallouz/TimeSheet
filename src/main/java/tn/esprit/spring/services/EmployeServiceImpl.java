@@ -221,4 +221,10 @@ public class EmployeServiceImpl implements IEmployeService {
 		return (List<Employe>) employeRepository.findAll();
 	}
 
+	@Override
+	public Employe getEmployeById(int id) {
+		
+		return employeRepository.findById(id).orElse(null);
+	}
+
 }
