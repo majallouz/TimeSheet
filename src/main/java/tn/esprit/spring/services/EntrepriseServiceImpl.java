@@ -7,12 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import lombok.extern.slf4j.Slf4j;
 import tn.esprit.spring.entities.Departement;
 import tn.esprit.spring.entities.Entreprise;
 import tn.esprit.spring.repository.DepartementRepository;
 import tn.esprit.spring.repository.EntrepriseRepository;
 
 @Service
+@Slf4j
 public class EntrepriseServiceImpl implements IEntrepriseService {
 
 	@Autowired
@@ -55,7 +57,9 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 		for(Departement dep : entrepriseManagedEntity.getDepartements()){
 			depNames.add(dep.getName());
 		}
-		
+		if(depNames.size()==0) {
+			log.warn("the list is empty");
+		}
 		return depNames;
 	}
 
