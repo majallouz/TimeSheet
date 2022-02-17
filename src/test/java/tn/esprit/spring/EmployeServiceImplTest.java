@@ -29,17 +29,40 @@ public class EmployeServiceImplTest {
 	
 	@Test
 	public void testAddEmployee() {
-		log.info("********************************Start Method Test Add Employee ******************************************************");
+		log.warn("********************************Start Method Test Add Employee ******************************************************");
 	
 	Employe e = new Employe();
 	e.setEmail("majallouz@vermeg.com");
 	e.setNom("JALLOUZ");
 	e.setPrenom("Mohamed Ali");
 	int employeeId = service.addOrUpdateEmploye(e);
+	log.trace("trace : emplye added sucessfuly !");
+	log.debug("debug : emplye added sucessfuly  ");
+	int id = 1;
+	if( "".equals(service.getEmployePrenomById(employeeId).trim())) 	
+	log.error("we don't have departement with this " + id);
+	
 	assertNotNull(service.getEmployePrenomById(employeeId));
 	log.info("this is one employee of  " + service.getAllEmployes().size() +" employees");	
-	log.info("********************************End Method Test Add Employee ******************************************************");
+	log.warn("********************************End Method Test Add Employee ******************************************************");
 
+	}
+	
+	@Test
+	public void testAffecterEmployeADepartement() {
+		log.warn("********************************Start Method Affecter Employe A Departement ******************************************************");
+		log.info("id employee = 1 id Departement= 1");
+		log.trace("invoking service !");
+		service.affecterEmployeADepartement(1, 1);
+		log.debug("debug : affect employe to dept ");
+		Employe e = service.getEmployeById(1);
+		if(e.getDepartements().isEmpty()) {
+			log.error("no depts for emp " + e.getId());
+		}
+		log.warn("********************************End Method Test Affecter Employe A Departement ******************************************************");
+
+
+		
 	}
 	
 

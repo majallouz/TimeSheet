@@ -13,9 +13,10 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.validation.constraints.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import tn.esprit.spring.dto.EmployeDTO;
 
 
 @Entity
@@ -74,6 +75,16 @@ public class Employe implements Serializable {
 		this.password = password;
 		this.actif = actif;
 		this.role = role;
+	}
+	
+	public Employe(EmployeDTO dto) {
+		this.id =dto.getId();
+		this.prenom = dto.getPrenom();
+		this.nom = dto.getNom();
+		this.email = dto.getEmail();
+		this.password = dto.getPassword();
+		this.actif = dto.isActif();
+		this.role = dto.getRole();
 	}
 
 

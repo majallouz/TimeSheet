@@ -53,6 +53,11 @@ public class TimesheetServiceImpl implements ITimesheetService {
 	        assert mission != null;
 	        mission.setDepartement(dep);
 	        missionRepository.save(mission);
+
+			if(mission.getDepartement()==dep) {
+				log.trace("Mission affectée au departement avec succés !!!");
+	
+			}
 	    }
 	
 	
@@ -73,8 +78,8 @@ public class TimesheetServiceImpl implements ITimesheetService {
 
 	
 	 public void validerTimesheet(int missionId, int employeId, Date dateDebut, Date dateFin, int validateurId) {
-	        Employe validateur = null;
-	        Mission mission = null;
+	        Employe validateur = new Employe();
+	        Mission mission = new Mission();
 	        Optional<Employe> employeR = employeRepository.findById(validateurId);
 	        Optional<Mission> missionR = missionRepository.findById(missionId);
 	        if (employeR.isPresent() && missionR.isPresent()) {
@@ -84,6 +89,7 @@ public class TimesheetServiceImpl implements ITimesheetService {
 		//verifier s'il est un chef de departement (interet des enum)
 		if(!validateur.getRole().equals(Role.CHEF_DEPARTEMENT)){
 			log.warn("l'employe doit etre chef de departement pour valider une feuille de temps !");
+			log.error("Timesheet is Invalid");
 			return;
 		}
 		//verifier s'il est le chef de departement de la mission en question
@@ -96,6 +102,7 @@ public class TimesheetServiceImpl implements ITimesheetService {
 		}
 		if(!chefDeLaMission){
 			log.warn("l'employe doit etre chef de departement de la mission en question");
+			log.error("Timesheet is Invalid");
 			return;
 		}
 //
