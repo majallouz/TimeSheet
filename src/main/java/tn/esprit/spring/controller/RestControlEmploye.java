@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import tn.esprit.spring.dto.ContratDTO;
+import tn.esprit.spring.dto.EmployeDTO;
 import tn.esprit.spring.entities.Contrat;
 import tn.esprit.spring.entities.Employe;
 import tn.esprit.spring.entities.Entreprise;
@@ -36,8 +38,9 @@ public class RestControlEmploye {
 	// http://localhost:8081/SpringMVC/servlet/ajouterEmployer
 	@PostMapping("/ajouterEmployer")
 	@ResponseBody
-	public Employe ajouterEmploye(@RequestBody Employe employe)
+	public Employe ajouterEmploye(@RequestBody EmployeDTO dto)
 	{
+		Employe employe = new Employe(dto); 
 		iemployeservice.addOrUpdateEmploye(employe);
 		return employe;
 	}
@@ -66,7 +69,8 @@ public class RestControlEmploye {
 	// http://localhost:8081/SpringMVC/servlet/ajouterContrat
 	@PostMapping("/ajouterContrat")
 	@ResponseBody
-	public int ajouterContrat(@RequestBody Contrat contrat) {
+	public int ajouterContrat(@RequestBody ContratDTO dto) {
+		Contrat contrat = new Contrat(dto);
 		iemployeservice.ajouterContrat(contrat);
 		return contrat.getReference();
 	}
@@ -158,7 +162,7 @@ public class RestControlEmploye {
 	}
 
 	
-	//TODO
+	
 	public List<Timesheet> getTimesheetsByMissionAndDate(Employe employe, Mission mission, Date dateDebut,
 			Date dateFin) {
 		return iemployeservice.getTimesheetsByMissionAndDate(employe, mission, dateDebut, dateFin);
