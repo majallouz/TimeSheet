@@ -109,10 +109,10 @@ class TimesheetServiceImplTest {
 		employeeService.affecterEmployeADepartement(employeeID, 2);
 		//employeeService.affecterEmployeADepartement(employeeID, 3);
 		Employe e = employerep.findById(employeeID).orElse(null);
-		if (e.getRole() != Role.CHEF_DEPARTEMENT)
-		{
-			log.warn("Attention l'employee n'est pas chef de departement, Veuillez vérifier le rôle !!!");
-		}
+//		if (e.getRole() != Role.CHEF_DEPARTEMENT)
+//		{
+//			log.warn("Attention l'employee n'est pas chef de departement, Veuillez vérifier le rôle !!!");
+//		}
 		
 		
 		//création d'un département
