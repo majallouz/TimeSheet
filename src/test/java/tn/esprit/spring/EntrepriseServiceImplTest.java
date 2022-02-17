@@ -30,9 +30,13 @@ public class EntrepriseServiceImplTest {
 
 	@Test
 	public void testAddEntreprise() {
+<<<<<<< HEAD
 		log.info("********************************Start Method Test Add Entreprise ******************************************************");
 		//logging debug
 		log.debug("add new entreprise");
+=======
+		log.info("********************************Start Method Test Add Entreprise **************************************************");
+>>>>>>> ed54e49b1dbf01ffd5cdcbcc93a4e4d06ec009cc
 	Entreprise e = new Entreprise();
 	e.setName("Vermeg");
 	e.setRaisonSocial("123");
