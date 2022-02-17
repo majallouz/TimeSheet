@@ -13,6 +13,7 @@ import tn.esprit.spring.entities.Timesheet;
 public interface IEmployeService {
 	
 	public Employe authenticate(String login, String password) ;
+	public Employe getEmployeById(int id);
 	 
 	
 	public void mettreAjourEmailByEmployeId(String email, int employeId);
