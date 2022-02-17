@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import tn.esprit.spring.dto.DepartementDTO;
+
 
 @Entity
 public class Departement implements Serializable {
@@ -82,6 +84,21 @@ public class Departement implements Serializable {
 
 	public void setEntreprise(Entreprise entreprise) {
 		this.entreprise = entreprise;
+	}
+
+	public Departement(int id, String name, List<Employe> employes, List<Mission> missions, Entreprise entreprise) {
+		this.id = id;
+		this.name = name;
+		this.employes = employes;
+		this.missions = missions;
+		this.entreprise = entreprise;
+	}
+	public Departement(DepartementDTO dto) {
+		this.id = dto.getId();
+		this.name = dto.getName();
+		this.employes = dto.getEmployes();
+		this.missions = dto.getMissions();
+		this.entreprise = dto.getEntreprise();
 	}
 	
 	

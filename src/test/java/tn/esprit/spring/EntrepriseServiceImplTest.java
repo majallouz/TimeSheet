@@ -29,6 +29,30 @@ public class EntrepriseServiceImplTest {
 	
 
 	@Test
+	public void testAddDepartement() {
+		log.info("********************************Start Method Test Add Departement ******************************************************");
+	
+		log.debug("add new departement");
+	Departement d = new Departement();
+	int expected=depService.getAllDepartements().size();
+	d.setName("Recherche et developement");
+	int entrId =1;
+	Entreprise entreprise = entrepriseService.getEntrepriseById(entrId);
+	if(entreprise == null ) {
+		log.error("we don't have an entreprise with this " + entrId);
+	}
+	d.setEntreprise(entreprise);
+	int departementId = entrepriseService.ajouterDepartement(d);
+	assertNotNull(entrepriseService.getEntrepriseById(departementId));
+	assertEquals(expected+1, depService.getAllDepartements().size());
+	log.trace("departement added sucessfuly !");
+	
+	
+	
+	log.info("we have " + depService.getAllDepartements().size() +" departement in the database");	
+	
+	}
+	@Test
 	public void testAddEntreprise() {
 
 		log.info("********************************Start Method Test Add Entreprise ******************************************************");
@@ -54,30 +78,6 @@ public class EntrepriseServiceImplTest {
 	
 	}
 	
-	@Test
-	public void testAddDepartement() {
-		log.info("********************************Start Method Test Add Departement ******************************************************");
-	
-		log.debug("add new departement");
-	Departement d = new Departement();
-	int expected=depService.getAllDepartements().size();
-	d.setName("Recherche et developement");
-	int entrId =1;
-	Entreprise entreprise = entrepriseService.getEntrepriseById(entrId);
-	if(entreprise == null ) {
-		log.error("we don't have an entreprise with this " + entrId);
-	}
-	d.setEntreprise(entreprise);
-	int departementId = entrepriseService.ajouterDepartement(d);
-	assertNotNull(entrepriseService.getEntrepriseById(departementId));
-	assertEquals(expected+1, depService.getAllDepartements().size());
-	log.trace("departement added sucessfuly !");
-	
-	
-	
-	log.info("we have " + depService.getAllDepartements().size() +" departement in the database");	
-	
-	}
 	
 	@Test
 	public void testAffectDepartementToEntreprise() {
