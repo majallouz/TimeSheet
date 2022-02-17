@@ -78,8 +78,8 @@ public class TimesheetServiceImpl implements ITimesheetService {
 
 	
 	 public void validerTimesheet(int missionId, int employeId, Date dateDebut, Date dateFin, int validateurId) {
-	        Employe validateur = null;
-	        Mission mission = null;
+	        Employe validateur = new Employe();
+	        Mission mission = new Mission();
 	        Optional<Employe> employeR = employeRepository.findById(validateurId);
 	        Optional<Mission> missionR = missionRepository.findById(missionId);
 	        if (employeR.isPresent() && missionR.isPresent()) {
