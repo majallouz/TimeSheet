@@ -12,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import tn.esprit.spring.dto.EntrepriseDTO;
+
 @Entity
 public class Entreprise implements Serializable{
 	
@@ -81,6 +83,24 @@ public class Entreprise implements Serializable{
 		departement.setEntreprise(this);
 		this.departements.add(departement);
 	}
+
+	public Entreprise(int id, String name, String raisonSocial, List<Departement> departements) {
+	
+		this.id = id;
+		this.name = name;
+		this.raisonSocial = raisonSocial;
+		this.departements = departements;
+	}
+	
+	public Entreprise(EntrepriseDTO dto) {
+		
+		this.id = dto.getId();
+		this.name = dto.getName();
+		this.raisonSocial = dto.getRaisonSocial();
+		this.departements = dto.getDepartements();
+	}
+	
+	
 
 
 

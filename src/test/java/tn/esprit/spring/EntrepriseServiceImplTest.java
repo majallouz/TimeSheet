@@ -29,32 +29,6 @@ public class EntrepriseServiceImplTest {
 	
 
 	@Test
-	public void testAddEntreprise() {
-
-		log.info("********************************Start Method Test Add Entreprise ******************************************************");
-		//logging debug
-		log.debug("add new entreprise");
-	Entreprise e = new Entreprise();
-	e.setName("Vermeg");
-	e.setRaisonSocial("123");
-	int entrepriseId = entrepriseService.ajouterEntreprise(e);
-	//assertion 
-	assertNotNull(entrepriseService.getEntrepriseById(entrepriseId));
-	//logging trace
-	log.trace("entreprise added sucessfuly !");
-	//logging trace
-	log.debug("affect departement to entreprise ");
-	int depId = 1;
-	if(!depService.getAllDepartements().stream().filter(d -> d.getId()==depId).findAny().isPresent()) {
-		log.error("we don't have departement with this " + depId);
-	}
-	entrepriseService.affecterDepartementAEntreprise(depId,1);
-	log.trace("departement affected sucessfuly !");
-	log.info("this entreprise have " + entrepriseService.getAllDepartementsNamesByEntreprise(entrepriseId) +" departement in the database");	
-	
-	}
-	
-	@Test
 	public void testAddDepartement() {
 		log.info("********************************Start Method Test Add Departement ******************************************************");
 	
@@ -78,6 +52,33 @@ public class EntrepriseServiceImplTest {
 	log.info("we have " + depService.getAllDepartements().size() +" departement in the database");	
 	
 	}
+	@Test
+	public void testAddEntreprise() {
+
+		log.info("********************************Start Method Test Add Entreprise ******************************************************");
+		//logging debug
+		log.debug("add new entreprise");
+	Entreprise e = new Entreprise();
+	e.setName("Vermeg");
+	e.setRaisonSocial("123");
+	int entrepriseId = entrepriseService.ajouterEntreprise(e);
+	log.warn("entreprise created without departement");
+	//assertion 
+	assertNotNull(entrepriseService.getEntrepriseById(entrepriseId));
+	//logging trace
+	log.trace("entreprise added sucessfuly !");
+	//logging trace
+	log.debug("affect departement to entreprise ");
+	int depId = 1;
+	if(!depService.getAllDepartements().stream().filter(d -> d.getId()==depId).findAny().isPresent()) {
+		log.error("we don't have departement with this " + depId);
+	}
+	entrepriseService.affecterDepartementAEntreprise(depId,1);
+	log.trace("departement affected sucessfuly !");
+	log.info("this entreprise have " + entrepriseService.getAllDepartementsNamesByEntreprise(entrepriseId) +" departement in the database");	
+	
+	}
+	
 	
 	@Test
 	public void testAffectDepartementToEntreprise() {
