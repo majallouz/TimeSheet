@@ -62,6 +62,7 @@ public class EntrepriseServiceImplTest {
 	e.setName("Vermeg");
 	e.setRaisonSocial("123");
 	int entrepriseId = entrepriseService.ajouterEntreprise(e);
+	log.warn("entreprise created without departement");
 	//assertion 
 	assertNotNull(entrepriseService.getEntrepriseById(entrepriseId));
 	//logging trace
