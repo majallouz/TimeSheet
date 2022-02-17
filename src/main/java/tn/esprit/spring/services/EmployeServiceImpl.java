@@ -170,18 +170,7 @@ public class EmployeServiceImpl implements IEmployeService {
 	    }
 
 
-	  public void deleteContratById(int contratId) {
-	        log.info(MessageFormat.format("Contrat Id{0}", contratId));
-	        Optional<Contrat> contrat = contratRepoistory.findById(contratId);
-	        Contrat contratManagedEntity = null;
-	        if (contrat.isPresent()) {
-	            contratManagedEntity = contrat.get();
-	            contratRepoistory.delete(contratManagedEntity);
-	            log.info(MessageFormat.format("Contrat Id deleted{0}", contratId));
-	        } else {
-	            log.info("Contrat doesn't exist");
-	        }
-	    }
+	 
 
 	public int getNombreEmployeJPQL() {
 		return employeRepository.countemp();
@@ -226,5 +215,22 @@ public class EmployeServiceImpl implements IEmployeService {
 		
 		return employeRepository.findById(id).orElse(null);
 	}
+	  public void deleteContratById(int contratId) {
+	        log.info(MessageFormat.format("Contrat Id{0}", contratId));
+	        Optional<Contrat> contrat = contratRepoistory.findById(contratId);
+	        Contrat contratManagedEntity = null;
+	        if (contrat.isPresent()) {
+	            contratManagedEntity = contrat.get();
+	            contratRepoistory.delete(contratManagedEntity);
+	            log.info(MessageFormat.format("Contrat Id deleted{0}", contratId));
+	        } else {
+	            log.info("Contrat doesn't exist");
+	        }
+	    }
 
+	@Override
+	public int getContractById(int reference) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
