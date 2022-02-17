@@ -1,6 +1,5 @@
 package tn.esprit.spring.dto;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.GeneratedValue;
@@ -14,7 +13,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import tn.esprit.spring.entities.Employe;
 import tn.esprit.spring.entities.Entreprise;

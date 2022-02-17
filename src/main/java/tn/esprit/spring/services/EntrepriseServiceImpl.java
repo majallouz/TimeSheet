@@ -57,7 +57,7 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 		for(Departement dep : entrepriseManagedEntity.getDepartements()){
 			depNames.add(dep.getName());
 		}
-		if(depNames.size()==0) {
+		if(depNames.isEmpty()) {
 			log.warn("the list is empty");
 		}
 		return depNames;
