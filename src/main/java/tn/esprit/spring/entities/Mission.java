@@ -42,8 +42,8 @@ public class Mission implements Serializable {
 
 	public Mission(MissionDTO dto){
 		this.id =dto.getId();
-		this.prenom = dto.getName();
-		this.nom = dto.getDescription();
+		this.name = dto.getName();
+		this.description = dto.getDescription();
 		this.departement=dto.getDepartement();
 	}
 	

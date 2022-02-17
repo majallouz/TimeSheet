@@ -31,7 +31,8 @@ public class MissionDTO {
 	
 	private String description;
     
-	@JsonIgnore
+	@JsonIgnor
+	//ignore jason
 	@ManyToOne
 	private Departement departement;
 	
