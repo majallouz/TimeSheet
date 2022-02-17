@@ -7,11 +7,11 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.2.1.RELEASE</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository  -->
 	</parent>
 	<groupId>tn.esprit.spring</groupId>
 	<artifactId>timesheet</artifactId>
-	<version>4.0.3</version>
+	<version>5.0</version>
 	<name>timesheet</name>
 	<description>timesheet</description>
 
@@ -116,13 +116,13 @@
 	 
 	<distributionManagement>
 		<snapshotRepository>
-			<id>nexus-snapshots</id>
-			<url>http://localhost:8081/nexus/content/repositories/snapshots/</url>
+			<id>nexus-repo</id>
+			<url>http://localhost:8081/repository/maven-snapshots/</url>
 		</snapshotRepository>
 		 
 		 <repository>
-			<id>releases</id>			
-			<url>http://localhost:8081/nexus/content/repositories/releases/</url>
+			<id>nexus-repo</id>			
+			<url>http://localhost:8081/repository/maven-releases/</url>
 		</repository>
 	</distributionManagement>
 </project>
