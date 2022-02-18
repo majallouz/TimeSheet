@@ -10,8 +10,8 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>tn.esprit.spring</groupId>
-	<artifactId>timesheet-SNAPSHOT</artifactId>
-	<version>4.0-SNAPSHOT</version>
+	<artifactId>timesheet</artifactId>
+	<version>2.2.0</version>
 	<name>timesheet</name>
 	<description>timesheet</description>
 
@@ -123,12 +123,12 @@
 	 
 	<distributionManagement>
 		<snapshotRepository>
-			<id>nexus-snapshots</id>
+			<id>repo</id>
 			<url>http://localhost:8081/repository/maven-snapshots/</url>
 		</snapshotRepository>
 		 
 		 <repository>
-			<id>releases</id>
+			<id>repo</id>
 			<url>http://localhost:8081/repository/maven-releases/</url>
 		</repository>
 	</distributionManagement>
