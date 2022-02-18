@@ -37,6 +37,7 @@ public class EntrepriseServiceImplTest {
 	Departement d = new Departement();
 	int expected=depService.getAllDepartements().size();
 	d.setName("Recherche et developement");
+	Entreprise e = new Entreprise();
 	e.setName("Vermeg");
 	e.setRaisonSocial("123");
 	int entrID = entrepriseService.ajouterEntreprise(e);
