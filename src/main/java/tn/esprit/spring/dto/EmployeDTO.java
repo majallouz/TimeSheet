@@ -25,8 +25,8 @@ import tn.esprit.spring.entities.Timesheet;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class EmployeDTO {
 
 	private String prenom;

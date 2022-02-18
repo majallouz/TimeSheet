@@ -1,7 +1,6 @@
 package tn.esprit.spring.dto;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -13,10 +12,8 @@ import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import tn.esprit.spring.entities.Departement;
-import tn.esprit.spring.entities.Employe;
 
 @Getter
 @Setter

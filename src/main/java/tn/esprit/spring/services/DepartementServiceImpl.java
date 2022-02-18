@@ -14,10 +14,24 @@ public class DepartementServiceImpl implements IDepartementService {
 
 	@Autowired
 	DepartementRepository deptRepoistory;
-
+	
+	
+	public int ajouterDepartement(Departement departement) {
+		deptRepoistory.save(departement);
+		return departement.getId();
+	}
+	
+	
+		
 
 	public List<Departement> getAllDepartements() {
 		return (List<Departement>) deptRepoistory.findAll();
 	}
+
+	
+
+
+
+	
 
 }
