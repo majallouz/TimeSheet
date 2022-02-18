@@ -2,6 +2,11 @@ pipeline {
 
 
     agent any
+    environment {
+    registryCredential = 'dockerHub'
+    dockerImage = ''
+
+  }
     stages {
          stage('clone and clean repo') {
             steps {
