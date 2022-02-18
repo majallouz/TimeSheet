@@ -47,7 +47,7 @@ public class EntrepriseServiceImplTest {
 	}
 	d.setEntreprise(entreprise);
 	int departementId = entrepriseService.ajouterDepartement(d);
-	//assertNotNull(entrepriseService.getEntrepriseById(departementId));
+	assertNotNull(entrepriseService.getEntrepriseById(entrId));
 	assertEquals(expected+1, depService.getAllDepartements().size());
 	log.trace("departement added sucessfuly !");
 	
