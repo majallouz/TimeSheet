@@ -5,7 +5,7 @@ pipeline {
     environment {
 
     mvnHome = tool 'maven_3.3.3'
-    registry = "mgara07/timesheet"
+    registry = "mohamedalijallouz/timesheetmalek"
     registryCredential = 'dockerHub'
     dockerImage = ''
 
