@@ -34,14 +34,7 @@ pipeline {
                 bat 'mvn package deploy '
             }
         }
-        
-        stage('clean ws') {
-
-            steps {
-                    cleanWs()
-            }
-
-        }
+       
         stage('Building image') {
 
         steps {
@@ -74,6 +67,14 @@ pipeline {
       }
 
     }
+     
+        stage('clean ws') {
+
+            steps {
+                    cleanWs()
+            }
+
+        }
     }
     post { 
         always {            
