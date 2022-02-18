@@ -40,7 +40,7 @@ public class EntrepriseServiceImplTest {
 	Entreprise e = new Entreprise();
 	e.setName("Vermeg");
 	e.setRaisonSocial("123");
-	int entrID = entrepriseService.ajouterEntreprise(e);
+	int entrId = entrepriseService.ajouterEntreprise(e);
 	Entreprise entreprise = entrepriseService.getEntrepriseById(entrId);
 	if(entreprise == null ) {
 		log.error("we don't have an entreprise with this " + entrId);
