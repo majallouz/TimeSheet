@@ -41,13 +41,15 @@ class TimesheetServiceImplTest {
 	MissionRepository missionrep;
 	@Autowired
 	TimesheetRepository timesheetrep;
+	@Autowired
+	IDepartementService departementService;
 	
 	
 	
 	@Test
 	public void testajouterMission() {
 		log.info("********************************Start Method Test Add Mission ******************************************************");
-	
+		log.debug("add new departement");
 		//création d'une mission
 		Mission m = new Mission();
 		m.setName("Mission Mise en Prod");
@@ -102,13 +104,30 @@ class TimesheetServiceImplTest {
 		Date startDate = new Date(1997,06,12);
 		Date endDate = new Date(2021,06,12);
 		
-		int missionID = 2;
-		int employeeID = 8;
+		//création d'une mission
+		Mission m = new Mission();
+		m.setName("Mission Mise en Prod");
+		m.setDescription("Description de la mission de mise en Prod");
+		int missionID = timesheetService.ajouterMission(m);
+		assertNotNull(timesheetService.getAllEmployeByMission(missionID));
 		
-		employeeService.affecterEmployeADepartement(employeeID, 1);
-		employeeService.affecterEmployeADepartement(employeeID, 2);
+		//création d'un employee
+		Employe e = new Employe();
+		e.setEmail("mgara@vermeg.com");
+		e.setNom("Gara");
+		e.setPrenom("Malek");
+		e.setRole(Role.CHEF_DEPARTEMENT);
+		int employeeID = employeeService.addOrUpdateEmploye(e);
+		
+		//création d'un departement
+		Departement d = new Departement();
+		d.setName("Operations");
+		int DepartementID = departementService.ajouterDepartement(d);
+		
+		employeeService.affecterEmployeADepartement(employeeID, DepartementID);
+		//employeeService.affecterEmployeADepartement(employeeID, 2);
 		//employeeService.affecterEmployeADepartement(employeeID, 3);
-		Employe e = employerep.findById(employeeID).orElse(null);
+		
 		if (e.getRole() != Role.CHEF_DEPARTEMENT)
 		{
 			log.warn("Attention l'employee n'est pas chef de departement, Veuillez vérifier le rôle !!!");
@@ -116,13 +135,13 @@ class TimesheetServiceImplTest {
 		
 		
 		//création d'un département
-		timesheetService.affecterMissionADepartement(missionID,2);
+		timesheetService.affecterMissionADepartement(missionID,DepartementID);
 		
 		//création d'un timesheet
 		timesheetService.ajouterTimesheet(missionID, employeeID, startDate, endDate);
 
 		//validation du timesheet
-//		timesheetService.validerTimesheet(missionID, employeeID, startDate, endDate, employeeID);
+		timesheetService.validerTimesheet(missionID, employeeID, startDate, endDate, employeeID);
 		log.info("********************************End Method Test Validate TimeSheet ******************************************************");
 
 				

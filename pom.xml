@@ -10,8 +10,13 @@
 		<relativePath /> <!-- lookup parent from repository  -->
 	</parent>
 	<groupId>tn.esprit.spring</groupId>
+<<<<<<< HEAD
 	<artifactId>timesheet</artifactId>
 	<version>7.0</version>
+=======
+	<artifactId>timesheet-SNAPSHOT</artifactId>
+	<version>4.0-SNAPSHOT</version>
+>>>>>>> c9ab18a60533b6d70b3a0395c567ac65d4a2c330
 	<name>timesheet</name>
 	<description>timesheet</description>
 
@@ -102,7 +107,14 @@
 	</dependencies>
 
 
-
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+        </plugin>
+    </plugins>
+</build>
 	<!-- <build>
 		<outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
 		<plugins>
@@ -116,12 +128,20 @@
 	 
 	<distributionManagement>
 		<snapshotRepository>
+<<<<<<< HEAD
 			<id>nexus-repo</id>
+=======
+			<id>nexus-snapshots</id>
+>>>>>>> c9ab18a60533b6d70b3a0395c567ac65d4a2c330
 			<url>http://localhost:8081/repository/maven-snapshots/</url>
 		</snapshotRepository>
 		 
 		 <repository>
+<<<<<<< HEAD
 			<id>nexus-repo</id>			
+=======
+			<id>releases</id>
+>>>>>>> c9ab18a60533b6d70b3a0395c567ac65d4a2c330
 			<url>http://localhost:8081/repository/maven-releases/</url>
 		</repository>
 	</distributionManagement>

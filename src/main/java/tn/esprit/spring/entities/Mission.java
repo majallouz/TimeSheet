@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import tn.esprit.spring.dto.MissionDTO;
+
 @Entity
 public class Mission implements Serializable {
 
@@ -36,6 +38,13 @@ public class Mission implements Serializable {
 	public Mission(String name, String description){
 		this.name = name;
 		this.description = description;
+	}
+
+	public Mission(MissionDTO dto){
+		this.id =dto.getId();
+		this.name = dto.getName();
+		this.description = dto.getDescription();
+		this.departement=dto.getDepartement();
 	}
 	
 
