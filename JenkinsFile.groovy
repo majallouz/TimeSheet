@@ -1,8 +1,10 @@
 pipeline {
-
-
     agent any
-    
+    environment {
+    registry = "mohamedalijallouz/timesheetmalek"
+    registryCredential = 'dockerHub'
+    dockerImage = ''
+  }
     stages {
          stage('clone and clean repo') {
             steps {
