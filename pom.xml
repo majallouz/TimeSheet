@@ -102,8 +102,7 @@
 	</dependencies>
 
 
-
-	 <build>
+<!-- <build>
 		<outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
 		<plugins>
 			<plugin>
@@ -112,6 +111,7 @@
 			</plugin>
 		</plugins>
 	</build>
+	-->
 	
 	 
 	<distributionManagement>
