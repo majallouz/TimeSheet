@@ -3,6 +3,9 @@ pipeline {
 
     agent any
     environment {
+
+    mvnHome = tool 'maven_3.3.3'
+    registry = "mgara07/timesheet"
     registryCredential = 'dockerHub'
     dockerImage = ''
 
