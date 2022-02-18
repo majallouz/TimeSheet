@@ -31,12 +31,10 @@ public class MissionDTO {
 	
 	private String description;
     
-	@JsonIgnor
-	//ignore jason
+	
 	@ManyToOne
 	private Departement departement;
 	
-    @JsonIgnore
 	@OneToMany(mappedBy="mission")
 	private  List<Timesheet> timesheets;
 }
