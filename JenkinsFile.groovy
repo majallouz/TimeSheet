@@ -44,6 +44,15 @@ pipeline {
 
       }
     }
+    stage('Cleaning up') { 
+
+            steps { 
+
+                bat "docker rmi $registry:$BUILD_NUMBER" 
+
+            }
+
+        }
 
       stage('Building image') {
 
@@ -77,15 +86,7 @@ pipeline {
       }
 
     }
-    stage('Cleaning up') { 
-
-            steps { 
-
-                bat "docker rmi $registry:$BUILD_NUMBER" 
-
-            }
-
-        }
+    
 
     stage('clean workspace') {
 
