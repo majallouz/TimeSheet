@@ -27,6 +27,7 @@ public class EntrepriseServiceImplTest {
 	@Autowired
 	IDepartementService depService;
 	
+	
 
 	@Test
 	public void testAddDepartement() {
@@ -36,14 +37,17 @@ public class EntrepriseServiceImplTest {
 	Departement d = new Departement();
 	int expected=depService.getAllDepartements().size();
 	d.setName("Recherche et developement");
-	int entrId =1;
+	Entreprise e = new Entreprise();
+	e.setName("Vermeg");
+	e.setRaisonSocial("123");
+	int entrId = entrepriseService.ajouterEntreprise(e);
 	Entreprise entreprise = entrepriseService.getEntrepriseById(entrId);
 	if(entreprise == null ) {
 		log.error("we don't have an entreprise with this " + entrId);
 	}
 	d.setEntreprise(entreprise);
 	int departementId = entrepriseService.ajouterDepartement(d);
-	assertNotNull(entrepriseService.getEntrepriseById(departementId));
+	assertNotNull(entrepriseService.getEntrepriseById(entrId));
 	assertEquals(expected+1, depService.getAllDepartements().size());
 	log.trace("departement added sucessfuly !");
 	

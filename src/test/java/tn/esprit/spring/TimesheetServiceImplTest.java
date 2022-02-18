@@ -49,7 +49,7 @@ class TimesheetServiceImplTest {
 	@Test
 	public void testajouterMission() {
 		log.info("********************************Start Method Test Add Mission ******************************************************");
-	
+		log.debug("add new departement");
 		//création d'une mission
 		Mission m = new Mission();
 		m.setName("Mission Mise en Prod");
