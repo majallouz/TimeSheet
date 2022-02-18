@@ -2,14 +2,12 @@ package tn.esprit.spring.dto;
 
 import java.util.List;
 
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,6 +19,7 @@ import tn.esprit.spring.entities.Timesheet;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class MissionDTO {
 
 	@Id
