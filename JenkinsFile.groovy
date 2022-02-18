@@ -44,7 +44,7 @@ pipeline {
 
       }
     }
-    /*stage('Cleaning up') { 
+    stage('Cleaning up') { 
 
             steps { 
 
@@ -52,7 +52,7 @@ pipeline {
 
             }
 
-        }*/
+        }
 
       stage('Building image') {
 
