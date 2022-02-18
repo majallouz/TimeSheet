@@ -27,7 +27,7 @@ public class EntrepriseServiceImplTest {
 	@Autowired
 	IDepartementService depService;
 	
-	/*
+	
 
 	@Test
 	public void testAddDepartement() {
@@ -37,7 +37,9 @@ public class EntrepriseServiceImplTest {
 	Departement d = new Departement();
 	int expected=depService.getAllDepartements().size();
 	d.setName("Recherche et developement");
-	int entrId =1;
+	e.setName("Vermeg");
+	e.setRaisonSocial("123");
+	int entrID = entrepriseService.ajouterEntreprise(e);
 	Entreprise entreprise = entrepriseService.getEntrepriseById(entrId);
 	if(entreprise == null ) {
 		log.error("we don't have an entreprise with this " + entrId);
@@ -52,7 +54,7 @@ public class EntrepriseServiceImplTest {
 	
 	log.info("we have " + depService.getAllDepartements().size() +" departement in the database");	
 	
-	}*/
+	}
 	@Test
 	public void testAddEntreprise() {
 
