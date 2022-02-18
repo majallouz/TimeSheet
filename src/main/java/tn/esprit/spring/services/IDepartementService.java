@@ -8,7 +8,9 @@ import tn.esprit.spring.entities.Departement;
 public interface IDepartementService {
 	
 	
+	public int ajouterDepartement(Departement departement);
 	public List<Departement> getAllDepartements();
+
 
 
 	

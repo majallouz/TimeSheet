@@ -25,7 +25,6 @@ import tn.esprit.spring.entities.Timesheet;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
 public class EmployeDTO {
 

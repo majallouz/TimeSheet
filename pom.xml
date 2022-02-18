@@ -102,7 +102,14 @@
 	</dependencies>
 
 
-
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+        </plugin>
+    </plugins>
+</build>
 	<!-- <build>
 		<outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
 		<plugins>
@@ -119,7 +126,7 @@
 			<id>repo</id>
 			<url>http://localhost:8081/nexus/content/repositories/snapshots/</url>
 		</snapshotRepository>
-		 
+
 		 <repository>
 			<id>repo</id>			
 			<url>http://localhost:8081/nexus/content/repositories/releases/</url>
