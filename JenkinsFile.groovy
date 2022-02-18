@@ -44,15 +44,19 @@ pipeline {
 
       }
     }
-    stage('Cleaning up') { 
+   /* stage('Cleaning up') { 
 
             steps { 
 
-                bat "docker rmi $registry:$BUILD_NUMBER - 1" 
+                bat "docker rmi $registry:$BUILD_NUMBER-1" 
+                script{
+                    int buildNum = $BUILD_NUMBER
+                    echo buildNum
+                }
 
             }
 
-        }
+        }*/
 
       stage('Building image') {
 
