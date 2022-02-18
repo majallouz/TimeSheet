@@ -230,7 +230,6 @@ public class EmployeServiceImpl implements IEmployeService {
 
 	@Override
 	public int getContractById(int reference) {
-		// TODO Auto-generated method stub
-		return 0;
+		return reference;
 	}
 }
