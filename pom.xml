@@ -123,20 +123,12 @@
 	 
 	<distributionManagement>
 		<snapshotRepository>
-<<<<<<< HEAD
 			<id>nexus-repo</id>
-=======
-			<id>nexus-snapshots</id>
->>>>>>> c9ab18a60533b6d70b3a0395c567ac65d4a2c330
 			<url>http://localhost:8081/repository/maven-snapshots/</url>
 		</snapshotRepository>
 		 
 		 <repository>
-<<<<<<< HEAD
 			<id>nexus-repo</id>			
-=======
-			<id>releases</id>
->>>>>>> c9ab18a60533b6d70b3a0395c567ac65d4a2c330
 			<url>http://localhost:8081/repository/maven-releases/</url>
 		</repository>
 	</distributionManagement>
