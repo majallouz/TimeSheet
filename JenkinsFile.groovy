@@ -1,51 +1,142 @@
 pipeline {
+agent any
+environment {
+ 
+    mvnHome = tool 'MAVEN_3.3.9'
+    registry = "yasmineboutrif/timesheet" 
+    registryCredential = 'dockerHub' 
+    dockerImage = '' 
+   
+}
+stages{
+    
+stage('clone and clean repo'){
+    steps {
+
+        git changelog: false, branch: 'yasmine_branch',  credentialsId: 'yboutrif', poll: false, url: 'https://github.com/majallouz/TimeSheet.git'
+                /* bat 'git clone https://github.com/majallouz/TimeSheet.git'*/
+ bat "${mvnHome}/bin/mvn clean"
+    }
+
+}
 
 
-    agent any
-    stages {
-         stage('clone and clean repo') {
+stage('Test') {
+
             steps {
-                git changelog: false, branch: 'Malek_branch',  credentialsId: 'mgara07', poll: false, url: 'https://github.com/majallouz/TimeSheet.git'
-                /* bat 'git clone https://github.com/majallouz/TimeSheet.git'
-                bat 'mvn clean -f TimeSheet' */
-            }
-        }
-        stage('Test') {
-            steps { 
-                bat 'mvn test'
+
+                bat "${mvnHome}/bin/mvn test"
+
                 /* bat 'mvn test -f TimeSheet' */
+
             }
+
             post {
+
                 always {
+
                     junit '**/target/surefire-reports/TEST-*.xml'
+
                 }
+
             }
+
         }
+
         stage('Sonar') {
+
             steps {
-                bat 'mvn sonar:sonar'
+
+                bat "${mvnHome}/bin/mvn sonar:sonar"
+
             }
+
         }
+
         stage('Deploy') {
+
             steps {
-                bat 'mvn package deploy '
+
+                bat "${mvnHome}/bin/mvn package deploy "
+
             }
+
         }
         
-        stage('clean ws') {
+                stage('Building our image') { 
 
-            steps {
-                    cleanWs()
+            steps { 
+
+                script { 
+
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+
+                }
+
+            } 
+
+        }
+        
+        
+        stage('Deploy our image') { 
+            steps { 
+
+                script { 
+
+                    docker.withRegistry( '', registryCredential ) { 
+
+                        dockerImage.push() 
+
+                    }
+
+                } 
+
             }
 
+        } 
+        
+       stage('Cleaning up') { 
+
+            steps { 
+
+                bat "docker rmi $registry:$BUILD_NUMBER" 
+
+            }
+
+        } 
+
+       
+
+        stage('clean ws') {
+
+
+
+            steps {
+
+                    cleanWs()
+
+            }
+
+
+
         }
+
     }
-    post { 
+
+     post {
+
         always {            
+
             emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
+
                         recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
+
                         subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}",
+
                         to: '$DEFAULT_RECIPIENTS'
+
         }
+
     } 
+
 }
