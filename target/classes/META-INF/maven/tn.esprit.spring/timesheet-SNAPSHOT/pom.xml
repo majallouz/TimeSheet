@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>tn.esprit.spring</groupId>
 	<artifactId>timesheet-SNAPSHOT</artifactId>
-	<version>4.0-SNAPSHOT</version>
+	<version>4.1.0-SNAPSHOT</version>
 	<name>timesheet</name>
 	<description>timesheet</description>
 
@@ -126,7 +126,7 @@
 			<id>repo</id>
 			<url>http://localhost:8081/nexus/content/repositories/snapshots/</url>
 		</snapshotRepository>
-		 
+
 		 <repository>
 			<id>repo</id>			
 			<url>http://localhost:8081/nexus/content/repositories/releases/</url>
