@@ -1,7 +1,6 @@
 package tn.esprit.spring.dto;
 
 import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
@@ -17,6 +16,7 @@ import tn.esprit.spring.entities.Employe;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class TimesheetDTO {
 
     @EmbeddedId
