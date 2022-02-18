@@ -19,17 +19,17 @@ pipeline {
       }
 
     }
-   /* stage('Test') {
+    stage('Test') {
 
       steps {
         bat "${mvnHome}/bin/mvn test"
       }
       post {
                 always {
-                   */// junit '**/target/surefire-reports/TEST-*.xml'
-                /*}
+                    junit '**/target/surefire-reports/TEST-*.xml'
+                }
             }
-    }*/
+    }
     stage('sonar'){
         steps{
                 bat "${mvnHome}/bin/mvn sonar:sonar"
@@ -44,19 +44,6 @@ pipeline {
 
       }
     }
-   /* stage('Cleaning up') { 
-
-            steps { 
-
-                bat "docker rmi $registry:$BUILD_NUMBER-1" 
-                script{
-                    int buildNum = $BUILD_NUMBER
-                    echo buildNum
-                }
-
-            }
-
-        }*/
 
       stage('Building image') {
 
@@ -90,7 +77,15 @@ pipeline {
       }
 
     }
-    
+   /* stage('Cleaning up') { 
+
+            steps { 
+
+                bat "docker rmi $registry:$BUILD_NUMBER" 
+
+            }
+
+        }*/
 
     stage('clean workspace') {
 
