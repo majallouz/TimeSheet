@@ -27,6 +27,7 @@ public class EntrepriseServiceImplTest {
 	@Autowired
 	IDepartementService depService;
 	
+	/*
 
 	@Test
 	public void testAddDepartement() {
@@ -51,7 +52,7 @@ public class EntrepriseServiceImplTest {
 	
 	log.info("we have " + depService.getAllDepartements().size() +" departement in the database");	
 	
-	}
+	}*/
 	@Test
 	public void testAddEntreprise() {
 
