@@ -18,16 +18,16 @@ pipeline {
         bat "${mvnHome}/bin/mvn clean" 
       }
 
-    }/*
+    }
     stage('Test') {
 
       steps {
         bat "${mvnHome}/bin/mvn test"
       }
       post {
-                always {*/
-                 //   junit '**/target/surefire-reports/TEST-*.xml'
-              /*  }
+                always {
+                    junit '**/target/surefire-reports/TEST-*.xml'
+                }
             }
     }
     stage('sonar'){
@@ -35,7 +35,7 @@ pipeline {
                 bat "${mvnHome}/bin/mvn sonar:sonar"
     
         }
-    }*/
+    }
     stage('Deploy') {
       steps {
 
