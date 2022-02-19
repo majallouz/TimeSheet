@@ -49,7 +49,7 @@ public class ContractServiceImplTest {
 	int entrepriseId = employeService.ajouterContrat(contrat);
 	employeService.deleteContratById(contrat.getReference());
 	//assertNotNull(employeService.getContractById(contrat.getReference()));
-	log.info(" ********************Contract type " +contrat.getTypeContrat() +" deleted ********************");
+	log.warn(" ********************Contract type " +contrat.getTypeContrat() +" deleted ********************");
     log.info("********************************Start Method Test Delete non-existent Contract ******************************************************");
 	employeService.deleteContratById(999);
 	log.info("********************************End Method ******************************************************");

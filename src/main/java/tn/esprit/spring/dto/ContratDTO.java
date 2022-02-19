@@ -2,12 +2,14 @@ package tn.esprit.spring.dto;
 
 import java.util.Date;
 
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -27,4 +29,5 @@ public class ContratDTO {
 	private Employe employe;
 
 	private float salaire;
+
 }
